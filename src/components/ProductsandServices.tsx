@@ -1,0 +1,162 @@
+import React from "react";
+import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
+
+interface Product {
+  name: string;
+  description: string;
+  icon: string;
+  learnMoreLink: string;
+  appStoreLink: string;
+  playStoreLink: string;
+}
+
+const products: Product[] = [
+  {
+    name: "Xproguard Firewall",
+    description:
+      "Protect your device from threats with real-time monitoring, one-tap security, and suspicious connection blocking.",
+    icon: "/icons/appicon/firewall.svg",
+    learnMoreLink: "/xproguard-firewall",
+    appStoreLink: "#",
+    playStoreLink:
+      "https://play.google.com/store/apps/details?id=com.xproguard.firewall&hl=en",
+  },
+  {
+    name: "Xproguard PhotoVault",
+    description:
+      "Lock and hide private photos/videos with military-grade encryption, secure access, and backup recovery.",
+    icon: "/icons/appicon/photovault.svg",
+    learnMoreLink: "/xproguard-photovault",
+    appStoreLink: "#",
+    playStoreLink:
+      "https://play.google.com/store/apps/details?id=com.xproguard.photovault&hl=en",
+  },
+  {
+    name: "Xproguard AppLock",
+    description:
+      "Secure your data by locking apps with PIN, pattern, or fingerprint—plus stealth mode for extra privacy.",
+    icon: "/icons/appicon/Applock.svg",
+    learnMoreLink: "/xproguard-applock",
+    appStoreLink: "#",
+    playStoreLink:
+      "https://play.google.com/store/apps/details?id=com.xproguard.applock&hl=en",
+  },
+  {
+    name: "Xproguard AntiTheft",
+    description:
+      "Track, lock, and erase your lost device remotely with GPS tracking, alarms, and secure data wipe.",
+    icon: "/icons/appicon/antitheft.svg", // Assuming you have an antitheft.svg icon
+    learnMoreLink: "/xproguard-antitheft",
+    appStoreLink: "#",
+    playStoreLink:
+      "https://play.google.com/store/apps/details?id=com.xproguard.antitheft&hl=en",
+  },
+  {
+    name: "Xproguard VPN",
+    description:
+      "Browse securely and anonymously with our ultra-fast VPN—no logs, multi-location servers, and one-tap connection.",
+    icon: "/icons/appicon/photovault.svg", // Assuming you have a vpn.svg icon
+    learnMoreLink: "/xproguard-vpn",
+    appStoreLink: "#",
+    playStoreLink:
+      "https://play.google.com/store/apps/details?id=com.xproguard.vpn&hl=en",
+  },
+  {
+    name: "Xproguard Password Manager",
+    description:
+      "Store, auto-fill, and sync passwords securely across devices.",
+    icon: "/icons/appicon/passwordManager.svg", // Assuming you have a password-manager.svg icon
+    learnMoreLink: "/xproguard-password-manager",
+    appStoreLink:
+      "https://apps.apple.com/in/app/xproguard-password-manager/id6504745518",
+    playStoreLink:
+      "https://play.google.com/store/apps/details?id=com.xproguard.passwd&hl=en",
+  },
+];
+
+const ProductCard = ({ product }: { product: Product }) => {
+  return (
+    <motion.div
+      className="bg-[#06152B] p-6 rounded-3xl text-white shadow-lg border-2 border-[#52CDDD] w-full md:w-[95%] lg:w-full min-h-60 sm:min-h-60 md:min-h-96 relative mx-2 sm:mx-2 md:mx-4 flex flex-col lg:gap-y-5"
+      whileHover={{ backgroundColor: "#102A50" }}
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+    >
+      <div className="flex items-center space-x-4">
+        <img
+          src={product.icon}
+          alt="icon"
+          className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-20 lg:h-20 rounded-full"
+        />
+        <h2 className="font-bold text-lg sm:text-xl md:text-sm lg:text-3xl text-left font-roboto">
+          {product.name}
+        </h2>
+      </div>
+      <p className="text-gray-300 text-xs sm:text-sm md:text-base lg:text-lg leading-relaxed mt-2 text-left font-roboto">
+        {product.description}
+      </p>
+      <div className="mt-2 text-left mb-2">
+        <Link
+          to={product.learnMoreLink}
+          className="text-white text-xs sm:text-sm md:text-lg lg:text-xl font-bold"
+        >
+          Learn More &gt;
+        </Link>
+      </div>
+      <div className="w-3/4 flex justify-start space-x-4 absolute bottom-4 left-4">
+        <motion.a
+          whileHover={{ scale: 1.1 }}
+          href={product.playStoreLink}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg"
+            alt="Google Play"
+            className="h-5 sm:h-6 md:h-8 lg:h-10"
+          />
+        </motion.a>
+
+        <motion.a
+          whileHover={{ scale: 1.1 }}
+          href={product.appStoreLink}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img
+            src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg"
+            alt="App Store"
+            className="h-5 sm:h-6 md:h-8 lg:h-10"
+          />
+        </motion.a>
+      </div>
+    </motion.div>
+  );
+};
+
+const ProductsandServices = () => {
+  return (
+    <div className="px-5 py-10 text-center">
+      <motion.h1
+        initial={{ opacity: 0, y: -30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1.5, ease: "easeOut", delay: 0.5 }}
+        className="text-5xl md:text-5xl sm:text-3xl font-extrabold text-white mb-6 leading-tight font-roboto"
+      >
+        Seamless Security
+      </motion.h1>
+      <h2 className="text-xl sm:text-lg font-semibold text-gray-300 mb-8 leading-relaxed font-roboto">
+        Activate Xproguard and safeguard your digital life effortlessly.
+      </h2>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 justify-items-center">
+        {products.map((product, index) => (
+          <ProductCard key={index} product={product} />
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export default ProductsandServices;
