@@ -1,20 +1,13 @@
-import { useScroll, useTransform, } from "framer-motion";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-// import { Montserrat } from "next/font/google";
-// import { Playfair_Display } from "next/font/google";
-// import Image from "next/image";
-
-// Font instances
-// const montserrat = Montserrat({ subsets: ["latin"] });
-// const playfair = Playfair_Display({ subsets: ["latin"] });
+import { Link, useLocation } from "react-router-dom";
+import Logo from "../assets/logo.svg";
 
 export default function Navbar() {
   const { scrollY } = useScroll();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  // const location = useLocation();
+  const location = useLocation();
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
@@ -59,12 +52,9 @@ export default function Navbar() {
             className="flex items-center space-x-1"
           >
             <Link to="/" className="flex items-center space-x-1">
-              <Image src="/logo.svg" alt="Logo" width={54} height={49} />
-              {/* <span
-                className={`${playfair.className} w-[195px] h-[36px] font-extrabold text-custom-font md:text-3xl`}
-              >
-                XPROGUARD
-              </span> */}
+              <img src={Logo} alt="Logo" width={54} height={49} />
+              {/* Optional Brand Name */}
+              {/* <span className="text-white text-2xl font-bold">XPROGUARD</span> */}
             </Link>
           </motion.div>
 
