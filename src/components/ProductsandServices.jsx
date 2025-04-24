@@ -8,6 +8,8 @@ import Applock from "../assets/appicon/Applock.svg"
 import Antitheft from "../assets/appicon/antitheft.svg"
 import Vpn from "../assets/appicon/vpn.svg"
 import PasswordManager from "../assets/appicon/passwordManager.svg"
+import AppStore from "../assets/appicon/app-store.svg"
+import GooglePlay from "../assets/appicon/Google_Play_Store_badge_EN.svg"
 
 const products = [
 	{
@@ -19,6 +21,8 @@ const products = [
 		appStoreLink: "#",
 		playStoreLink:
 			"https://play.google.com/store/apps/details?id=com.xproguard.firewall&hl=en",
+		playStoreRender: true,
+		appStoreRender: false,
 	},
 	{
 		name: "Xproguard PhotoVault",
@@ -29,6 +33,8 @@ const products = [
 		appStoreLink: "#",
 		playStoreLink:
 			"https://play.google.com/store/apps/details?id=com.xproguard.photovault&hl=en",
+		playStoreRender: true,
+		appStoreRender: true,
 	},
 	{
 		name: "Xproguard AppLock",
@@ -39,6 +45,8 @@ const products = [
 		appStoreLink: "#",
 		playStoreLink:
 			"https://play.google.com/store/apps/details?id=com.xproguard.applock&hl=en",
+		playStoreRender: true,
+		appStoreRender: false,
 	},
 	{
 		name: "Xproguard AntiTheft",
@@ -49,6 +57,8 @@ const products = [
 		appStoreLink: "#",
 		playStoreLink:
 			"https://play.google.com/store/apps/details?id=com.xproguard.antitheft&hl=en",
+		playStoreRender: true,
+		appStoreRender: false,
 	},
 	{
 		name: "Xproguard VPN",
@@ -59,6 +69,8 @@ const products = [
 		appStoreLink: "#",
 		playStoreLink:
 			"https://play.google.com/store/apps/details?id=com.xproguard.vpn&hl=en",
+		playStoreRender: true,
+		appStoreRender: false,
 	},
 	{
 		name: "Xproguard Password Manager",
@@ -70,6 +82,8 @@ const products = [
 			"https://apps.apple.com/in/app/xproguard-password-manager/id6504745518",
 		playStoreLink:
 			"https://play.google.com/store/apps/details?id=com.xproguard.passwd&hl=en",
+		playStoreRender: true,
+		appStoreRender: true,
 	},
 ]
 
@@ -103,32 +117,33 @@ const ProductCard = ({product}) => {
 					Learn More &gt;
 				</Link>
 			</div>
-			<div className="w-3/4 flex justify-start space-x-4 absolute bottom-4 left-4">
-				<motion.a
-					whileHover={{scale: 1.1}}
-					href={product.playStoreLink}
-					target="_blank"
-					rel="noopener noreferrer"
-				>
-					<img
-						src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg"
-						alt="Google Play"
-						className="h-5 sm:h-6 md:h-8 lg:h-10"
-					/>
-				</motion.a>
-
-				<motion.a
-					whileHover={{scale: 1.1}}
-					href={product.appStoreLink}
-					target="_blank"
-					rel="noopener noreferrer"
-				>
-					<img
-						src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg"
-						alt="App Store"
-						className="h-5 sm:h-6 md:h-8 lg:h-10"
-					/>
-				</motion.a>
+			<div className="flex gap-3">
+				{product.playStoreRender && (
+					<a
+						href={product.playStoreLink}
+						target="_blank"
+						rel="noopener noreferrer"
+					>
+						<img
+							src={GooglePlay}
+							alt="Get it on Google Play"
+							className="h-10"
+						/>
+					</a>
+				)}
+				{product.appStoreRender && (
+					<a
+						href={product.appStoreLink}
+						target="_blank"
+						rel="noopener noreferrer"
+					>
+						<img
+							src={AppStore}
+							alt="Download on the App Store"
+							className="h-10"
+						/>
+					</a>
+				)}
 			</div>
 		</motion.div>
 	)

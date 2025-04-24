@@ -97,7 +97,7 @@ const JobListings = () => {
 								<h2 className="text-xl sm:text-2xl font-semibold text-center lg:text-left transition-transform duration-300 mt-4 lg:mt-0">
 									{job.role}
 								</h2>
-								<span className="text-gray-500 text-2xl sm:text-3xl transition-transform duration-300 group-hover:rotate-12">
+								<span className=" text-2xl sm:text-3xl transition-transform duration-300 group-hover:rotate-12">
 									{">"}
 								</span>
 								{hoveredJobId === job.id && (
