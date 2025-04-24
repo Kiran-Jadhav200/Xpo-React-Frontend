@@ -1,14 +1,13 @@
-"use client"
-
 import {motion} from "framer-motion"
-import Image from "next/image"
-import {useRouter} from "next/navigation"
-
+// import Placeholder from "/Placeholder.svg"
+// import NewBackground from "/NewBackground.svg"
 const Placeholder = "/Placeholder.svg"
 const NewBackground = "/NewBackground.svg"
 
 export default function Hero() {
-	const router = useRouter()
+	const navigateToProducts = () => {
+		window.location.href = "/products"
+	}
 
 	return (
 		<motion.div
@@ -48,7 +47,7 @@ export default function Hero() {
 				</motion.p>
 
 				<motion.button
-					onClick={() => router.push("/products")}
+					onClick={navigateToProducts}
 					initial={{opacity: 0, y: 20}}
 					animate={{opacity: 1, y: 0}}
 					transition={{duration: 0.5, delay: 1}}
@@ -78,11 +77,10 @@ export default function Hero() {
 						whileHover={{scale: 1.05, filter: "brightness(1.1)"}}
 						className="absolute inset-0 z-[-1] w-full h-full rounded-xl overflow-hidden"
 					>
-						<Image
+						<img
 							src={NewBackground}
 							alt="Background"
-							fill
-							className="object-cover opacity-70 brightness-110"
+							className="w-full h-full object-cover opacity-70 brightness-110"
 						/>
 					</motion.div>
 
@@ -94,11 +92,11 @@ export default function Hero() {
 						whileHover={{scale: 1.05}}
 						className="relative z-10"
 					>
-						<Image
+						<img
 							src={Placeholder}
-							alt="Hero Image"
-							width={677}
-							height={688}
+							alt="Hero"
+							width="677"
+							height="688"
 							className="rounded-xl w-full h-auto"
 						/>
 					</motion.div>

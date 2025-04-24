@@ -1,14 +1,5 @@
-"use client"
-
 import React from "react"
 import {motion} from "framer-motion"
-import {Roboto} from "next/font/google"
-
-const roboto = Roboto({
-	subsets: ["latin"],
-	display: "swap",
-	weight: ["400", "700", "900"],
-})
 
 const Results = () => {
 	return (
@@ -16,11 +7,11 @@ const Results = () => {
 			initial={{opacity: 0}}
 			animate={{opacity: 1}}
 			transition={{duration: 0.5}}
-			className={`max-w-[95%] mx-auto px-4 py-12 sm:py-20 lg:py-28 ${roboto.className}`}
+			className="max-w-[95%] mx-auto px-4 py-12 sm:py-20 lg:py-28"
 			style={{width: "100%", height: "120%"}}
 		>
 			<div className="flex flex-col md:flex-row items-start justify-between gap-12 lg:gap-24">
-				{/* Left section: Full image coverage */}
+				{/* Left section */}
 				<motion.div
 					initial={{x: -100, opacity: 0}}
 					animate={{x: 0, opacity: 1}}
@@ -39,7 +30,7 @@ const Results = () => {
 					</div>
 				</motion.div>
 
-				{/* Right section: Content */}
+				{/* Right section */}
 				<motion.div
 					initial={{x: 100, opacity: 0}}
 					animate={{x: 0, opacity: 1}}
@@ -55,7 +46,7 @@ const Results = () => {
 						<h2 className="font-bold text-gray-300 text-lg sm:text-2xl mb-6">
 							Why Choose Xproguard?
 						</h2>
-						<h1 className="text-3xl sm:text-3xl md:text-6xl font-extrabold mb-6">
+						<h1 className="text-3xl sm:text-3xl md:text-6xl font-extrabold mb-6 text-white">
 							Your{" "}
 							<span className="bg-gradient-to-r from-cyan-500 to-blue-600 bg-clip-text text-transparent whitespace-nowrap">
 								Digital Safety
@@ -64,13 +55,10 @@ const Results = () => {
 						</h1>
 						<p className="text-gray-300 text-base sm:text-lg mt-6 max-w-xl mx-auto lg:mx-0">
 							Xproguard provides a suite of security apps designed to safeguard
-							your personal and professional data from online threats. Whether
-							it's firewall protection, secure browsing, or data privacy, we’ve
-							got you covered.
+							your personal and professional data from online threats.
 						</p>
 					</motion.div>
 
-					{/* Features List */}
 					<div className="mt-8 flex justify-center items-center w-full">
 						<div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 lg:gap-10 w-full text-center lg:text-left">
 							<ul className="text-gray-300 text-base sm:text-lg flex flex-col justify-center items-center lg:items-start">
