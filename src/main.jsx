@@ -18,13 +18,17 @@ import PasswordManagerFAQ from "./components/FAQ/AppFAQcomponents/PasswordManage
 import ApplockFAQ from "./components/FAQ/AppFAQcomponents/ApplockFAQ.jsx"
 import PasswordManagerFAQIOS from "./components/FAQ/AppFAQcomponentsIos/PasswordManagerFAQIOS.jsx"
 import PhotovaultFAQIOS from "./components/FAQ/AppFAQcomponentsIos/PhotovaultFAQIOS.jsx"
-import FirewallApp from "./components/Product/Apps/FirewallApp.jsx"
-import AntiTheftApp from "./components/Product/Apps/AntiTheftApp.jsx"
-import ApplockApp from "./components/Product/Apps/ApplockApp.jsx"
-import VPNApp from "./components/Product/Apps/VPNApp.jsx"
-import PassManageApp from "./components/Product/Apps/PassManageApp.jsx"
-import PhotovaultApp from "./components/Product/Apps/PhotovaultApp.jsx"
+// import FirewallApp from "./components/Product/Apps/FirewallApp.jsx"
+// import AntiTheftApp from "./components/Product/Apps/AntiTheftApp.jsx"
+// import ApplockApp from "./components/Product/Apps/ApplockApp.jsx"
+// import VPNApp from "./components/Product/Apps/VPNApp.jsx"
+// import PassManageApp from "./components/Product/Apps/PassManageApp.jsx"
+// import PhotovaultApp from "./components/Product/Apps/PhotovaultApp.jsx"
 // import PrivacyPolicy from "./components/resourcess/PrivacyPolicy.jsx"
+import SoftwareDeveloperAndroidPage from "./components/carrier/Jobs/SoftwareDeveloperAndroidPage.jsx"
+import SoftwareDeveloperIOSPage from "./components/carrier/Jobs/SoftwareDeveloperIOSPage.jsx"
+import SoftwareTesterPage from "./components/carrier/Jobs/SoftwareTesterPage.jsx"
+import UIUXDesignerPage from "./components/carrier/Jobs/UIUXDesignerPage.jsx"
 const router = createBrowserRouter([
 	{
 		path: "/",
@@ -43,30 +47,30 @@ const router = createBrowserRouter([
 				path: "/products",
 				element: <ProductPage />,
 			},
-			{
-				path: "/firewall",
-				element: <FirewallApp />,
-			},
-			{
-				path: "/photovault",
-				element: <PhotovaultApp />,
-			},
-			{
-				path: "/applock",
-				element: <ApplockApp />,
-			},
-			{
-				path: "/antitheft",
-				element: <AntiTheftApp />,
-			},
-			{
-				path: "/vpn",
-				element: <VPNApp />,
-			},
-			{
-				path: "/password-manager",
-				element: <PassManageApp />,
-			},
+			// {
+			// 	path: "/firewall",
+			// 	element: <FirewallApp />,
+			// },
+			// {
+			// 	path: "/photovault",
+			// 	element: <PhotovaultApp />,
+			// },
+			// {
+			// 	path: "/applock",
+			// 	element: <ApplockApp />,
+			// },
+			// {
+			// 	path: "/antitheft",
+			// 	element: <AntiTheftApp />,
+			// },
+			// {
+			// 	path: "/vpn",
+			// 	element: <VPNApp />,
+			// },
+			// {
+			// 	path: "/password-manager",
+			// 	element: <PassManageApp />,
+			// },
 			{
 				path: "/news",
 				element: <NewsPage />,
@@ -74,6 +78,22 @@ const router = createBrowserRouter([
 			{
 				path: "/careers",
 				element: <CareersPage />,
+			},
+			{
+				path: "/software-engineer-android",
+				element: <SoftwareDeveloperAndroidPage />,
+			},
+			{
+				path: "/software-engineer-ios",
+				element: <SoftwareDeveloperIOSPage />,
+			},
+			{
+				path: "/software-test-engineer",
+				element: <SoftwareTesterPage />,
+			},
+			{
+				path: "/uiux-designer",
+				element: <UIUXDesignerPage />,
 			},
 			{
 				path: "/feedback",
@@ -103,6 +123,7 @@ const router = createBrowserRouter([
 				path: "/passwordFAQIOS",
 				element: <PasswordManagerFAQIOS />,
 			},
+
 			{
 				path: "/photovaultFAQIOS",
 				element: <PhotovaultFAQIOS />,
