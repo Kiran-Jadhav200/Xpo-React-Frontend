@@ -47,7 +47,7 @@ export default function MidSection() {
 
       {/* Right Section (More Width) */}
       <div className="w-full sm:w-1/2 md:w-1/2 lg:w-2/3 flex-grow lg:p-20 h-fit flex flex-col items-start text-left">
-        <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-slate-50">
           We invite new <span className="block">workers to the team!</span>
         </h2>
         <p className="mb-5 text-sm text-gray-400 sm:text-base">

@@ -146,27 +146,27 @@ const ProductCard = ({product}) => {
 	)
 }
 
-const OurProducts = () => {
+const ProductsandServices = () => {
 	return (
-		<div className="bg-[#020c1b] min-h-screen text-center px-6 py-10">
+		<div className="px-5 py-10 text-center">
 			<motion.h1
 				initial={{opacity: 0, y: -30}}
 				animate={{opacity: 1, y: 0}}
-				transition={{duration: 1}}
-				className="text-4xl md:text-5xl font-extrabold text-white mb-4"
+				transition={{duration: 1.5, ease: "easeOut", delay: 0.5}}
+				className="text-5xl md:text-5xl sm:text-3xl font-extrabold text-white mb-6 leading-tight font-roboto"
 			>
-				Our Products
+				Seamless Security
 			</motion.h1>
-			<p className="text-lg text-gray-300 mb-10">
-				Secure your digital world with Xproguard’s suite of protection tools.
-			</p>
-			<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
-				{appData.map((product) => (
-					<ProductCard key={product.id} product={product} />
+			<h2 className="text-xl sm:text-lg font-semibold text-gray-300 mb-8 leading-relaxed font-roboto">
+				Activate Xproguard and safeguard your digital life effortlessly.
+			</h2>
+			<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 justify-items-center">
+				{products.map((product, index) => (
+					<ProductCard key={index} product={product} />
 				))}
 			</div>
 		</div>
 	)
 }
 
-export default OurProducts
+export default ProductsandServices
