@@ -1,12 +1,14 @@
 import React from "react"
 import {motion} from "framer-motion"
-import {useNavigate} from "react-router-dom"
+import {Link, useNavigate} from "react-router-dom"
 import Firewall from "../../assets/appicon/firewall.svg"
 import Photovault from "../../assets/appicon/photovault.svg"
 import Applock from "../../assets/appicon/Applock.svg"
 import Antitheft from "../../assets/appicon/antitheft.svg"
 import Vpn from "../../assets/appicon/vpn.svg"
 import PasswordManager from "../../assets/appicon/passwordManager.svg"
+import AppStore from "../../assets/appicon/app-store.svg"
+import GooglePlay from "../../assets/appicon/Google_Play_Store_badge_EN.svg"
 
 const appData = [
 	{
@@ -18,6 +20,8 @@ const appData = [
 		appStoreLink: "#",
 		playStoreLink:
 			"https://play.google.com/store/apps/details?id=com.xproguard.firewall&hl=en",
+		playStoreRender: true,
+		appStoreRender: false,
 	},
 	{
 		id: "photovault",
@@ -28,6 +32,8 @@ const appData = [
 		appStoreLink: "#",
 		playStoreLink:
 			"https://play.google.com/store/apps/details?id=com.xproguard.photovault&hl=en",
+		playStoreRender: true,
+		appStoreRender: true,
 	},
 	{
 		id: "applock",
@@ -38,6 +44,8 @@ const appData = [
 		appStoreLink: "#",
 		playStoreLink:
 			"https://play.google.com/store/apps/details?id=com.xproguard.applock&hl=en",
+		playStoreRender: true,
+		appStoreRender: false,
 	},
 	{
 		id: "antitheft",
@@ -48,6 +56,8 @@ const appData = [
 		appStoreLink: "#",
 		playStoreLink:
 			"https://play.google.com/store/apps/details?id=com.xproguard.antitheft&hl=en",
+		playStoreRender: true,
+		appStoreRender: false,
 	},
 	{
 		id: "vpn",
@@ -58,6 +68,8 @@ const appData = [
 		appStoreLink: "#",
 		playStoreLink:
 			"https://play.google.com/store/apps/details?id=com.xproguard.vpn&hl=en",
+		playStoreRender: true,
+		appStoreRender: false,
 	},
 	{
 		id: "password-manager",
@@ -69,6 +81,8 @@ const appData = [
 			"https://apps.apple.com/in/app/xproguard-password-manager/id6504745518",
 		playStoreLink:
 			"https://play.google.com/store/apps/details?id=com.xproguard.passwd&hl=en",
+		playStoreRender: true,
+		appStoreRender: true,
 	},
 ]
 
@@ -76,7 +90,7 @@ const ProductCard = ({product}) => {
 	const navigate = useNavigate()
 
 	const handleMoreInfo = () => {
-		navigate(`/products/${product.id}`)
+		navigate(`/${product.id}`)
 	}
 
 	return (
@@ -108,31 +122,25 @@ const ProductCard = ({product}) => {
 				</button>
 			</div>
 
-			<div className="flex space-x-4 mt-6">
-				<motion.a
-					whileHover={{scale: 1.05}}
-					href={product.playStoreLink}
-					target="_blank"
-					rel="noopener noreferrer"
-				>
-					<img
-						src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg"
-						alt="Google Play"
-						className="h-8"
-					/>
-				</motion.a>
-				<motion.a
-					whileHover={{scale: 1.05}}
-					href={product.appStoreLink}
-					target="_blank"
-					rel="noopener noreferrer"
-				>
-					<img
-						src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg"
-						alt="App Store"
-						className="h-8"
-					/>
-				</motion.a>
+			<div className="flex gap-3 mt-3">
+				{product.playStoreRender && (
+					<Link to={product.playStoreLink} rel="noopener noreferrer">
+						<img
+							src={GooglePlay}
+							alt="Get it on Google Play"
+							className="h-10"
+						/>
+					</Link>
+				)}
+				{product.appStoreRender && (
+					<Link to={product.appStoreLink} rel="noopener noreferrer">
+						<img
+							src={AppStore}
+							alt="Download on the App Store"
+							className="h-10"
+						/>
+					</Link>
+				)}
 			</div>
 		</motion.div>
 	)
