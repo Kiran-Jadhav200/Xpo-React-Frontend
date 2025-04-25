@@ -147,6 +147,8 @@ const ProductCard = ({product}) => {
 }
 
 const ProductsandServices = () => {
+	const products = appData
+
 	return (
 		<div className="px-5 py-10 text-center">
 			<motion.h1

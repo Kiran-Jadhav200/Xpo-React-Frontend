@@ -24,7 +24,11 @@ import ApplockApp from "./components/Product/Apps/ApplockApp.jsx"
 import VPNApp from "./components/Product/Apps/VPNApp.jsx"
 import PassManageApp from "./components/Product/Apps/PassManageApp.jsx"
 import PhotovaultApp from "./components/Product/Apps/PhotovaultApp.jsx"
-// import PrivacyPolicy from "./components/resourcess/PrivacyPolicy.jsx"
+import PrivacyPolicy from "./components/resourcess/PrivacyPolicy.jsx"
+import SoftwareDeveloperAndroidPage from "./components/carrier/Jobs/SoftwareDeveloperAndroidPage.jsx"
+import SoftwareDeveloperIOSPage from "./components/carrier/Jobs/SoftwareDeveloperIOSPage.jsx"
+import SoftwareTesterPage from "./components/carrier/Jobs/SoftwareTesterPage.jsx"
+import UIUXDesignerPage from "./components/carrier/Jobs/UIUXDesignerPage.jsx"
 const router = createBrowserRouter([
 	{
 		path: "/",
@@ -76,6 +80,22 @@ const router = createBrowserRouter([
 				element: <CareersPage />,
 			},
 			{
+				path: "/software-engineer-android",
+				element: <SoftwareDeveloperAndroidPage />,
+			},
+			{
+				path: "/software-engineer-ios",
+				element: <SoftwareDeveloperIOSPage />,
+			},
+			{
+				path: "/software-test-engineer",
+				element: <SoftwareTesterPage />,
+			},
+			{
+				path: "/uiux-designer",
+				element: <UIUXDesignerPage />,
+			},
+			{
 				path: "/feedback",
 				element: <Feedback />,
 			},
@@ -103,6 +123,7 @@ const router = createBrowserRouter([
 				path: "/passwordFAQIOS",
 				element: <PasswordManagerFAQIOS />,
 			},
+
 			{
 				path: "/photovaultFAQIOS",
 				element: <PhotovaultFAQIOS />,
