@@ -51,10 +51,12 @@ export default function Navbar() {
 						transition={{duration: 0.7}}
 						className="flex items-center space-x-1"
 					>
-						<Link to="/" className="flex items-center space-x-1">
+						<Link to="/" className="flex items-center space-x-1 ">
 							<img src={Logo} alt="Xproguard Logo" className="h-10 w-auto" />
 							{/* Optional Brand Name */}
-							{/* <span className="text-white text-2xl font-bold">XPROGUARD</span> */}
+							<span className="w-[195px] h-[36px] font-extrabold text-custom-font md:text-3xl text-white">
+								XPROGUARD
+							</span>
 						</Link>
 					</motion.div>
 
