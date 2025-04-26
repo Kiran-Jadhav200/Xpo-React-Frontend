@@ -1,73 +1,120 @@
 import React, {useEffect} from "react"
 import {motion} from "framer-motion"
 import {Link} from "react-router-dom"
+import Firewall from "../../assets/appicon/firewall.svg" //done
+import Photovault from "../../assets/appicon/photovault.svg" // done
+import Applock from "../../assets/appicon/Applock.svg" //done
+import Antitheft from "../../assets/appicon/antitheft.svg" //done
+import Vpn from "../../assets/appicon/vpn.svg" // done
+import PasswordManager from "../../assets/appicon/passwordManager.svg" //done
+import AppStore from "../../assets/appicon/app-store.svg"
+import GooglePlay from "../../assets/appicon/Google_Play_Store_badge_EN.svg"
 
-// Array of product objects
-const products = [
+const apps = [
 	{
-		name: "Xproguard Firewall",
-		icon: "/icons/appicon/firewall.svg",
-		Policy: "xproguard-firewall",
-		description: "Advanced network protection and traffic monitoring system",
+		icon: Firewall,
+		title: "Xproguard Firewall",
+		description:
+			"Protect your device from threats with real-time monitoring, one-tap security, and suspicious connection blocking.",
+
+		playStore: "/firewallFAQ",
+		appStore: "#",
+
+		playStoreRender: true,
+		appStoreRender: false,
+		privacyPath: "/privacy-policy-firewall",
 	},
 	{
-		name: "Xproguard PhotoVault",
-		icon: "/icons/appicon/photovault.svg",
-		Policy: "xproguard-photovault",
-		description: "Secure encrypted storage for your private photos and videos",
+		icon: Photovault,
+		title: "Xproguard PhotoVault",
+		description:
+			"Lock and hide private photos/videos with military-grade encryption, secure access, and backup recovery.",
+
+		playStore: "/photovaultFAQ",
+		appStore: "/photovaultFAQIOS",
+
+		playStoreRender: true,
+		appStoreRender: true,
+		privacyPath: "/privacy-policy-photovault",
 	},
 	{
-		name: "Xproguard AppLock",
-		icon: "/icons/appicon/Applock.svg",
-		Policy: "xproguard-applock",
-		description: "Biometric security for your sensitive applications",
+		icon: Applock,
+		title: "Xproguard AppLock",
+		description:
+			"Secure your data by locking apps with PIN, pattern, or fingerprint—plus stealth mode for extra privacy.",
+
+		playStore: "/applockFAQ",
+		appStore: "#",
+
+		playStoreRender: true,
+		appStoreRender: false,
+		privacyPath: "/privacy-policy-applock",
 	},
 	{
-		name: "Xproguard AntiTheft",
-		icon: "/icons/appicon/antitheft.svg",
-		Policy: "xproguard-antitheft",
-		description: "Device tracking and remote wipe capabilities",
+		icon: Antitheft,
+		title: "Xproguard AntiTheft",
+		description:
+			"Track, lock, and erase your lost device remotely with GPS tracking, alarms, and secure data wipe.",
+		playStore: "/antitheftFAQ",
+		appStore: "#",
+
+		playStoreRender: true,
+		appStoreRender: false,
+		privacyPath: "/privacy-policy-antitheft",
 	},
 	{
-		name: "Xproguard VPN",
-		icon: "/icons/appicon/photovault.svg",
-		Policy: "xproguard-vpn",
-		description: "Secure encrypted internet connection worldwide",
+		icon: Vpn,
+		title: "Xproguard VPN",
+		description:
+			"Browse securely and anonymously with our ultra-fast VPN—no logs, multi-location servers, and one-tap connection.",
+		playStore: "vpmFAQ",
+		appStore: "#",
+
+		playStoreRender: true,
+		appStoreRender: false,
+		privacyPath: "/privacy-policy-vpn",
 	},
 	{
-		name: "Xproguard Password Manager",
-		icon: "/icons/appicon/passwordManager.svg",
-		Policy: "xproguard-password-manager",
-		description: "Military-grade password storage and auto-fill",
+		icon: PasswordManager,
+		title: "Xproguard Password Manager",
+		description:
+			"Store, auto-fill, and sync passwords securely across devices.",
+
+		playStore: "/passwordFAQ",
+		appStore: "/passwordFAQIOS",
+
+		playStoreRender: true,
+		appStoreRender: true,
+		privacyPath: "/privacy-policy-password-manager",
 	},
 ]
 
-// Component for each product card
-const ProductCard = ({product}) => {
+const ProductCard = () => {
 	return (
-		<motion.div
-			whileHover={{scale: 1.05, rotate: 0.5}}
-			transition={{type: "spring", stiffness: 300}}
-			className="bg-[#0F52BA] border border-black/10 rounded-2xl p-6 text-white w-full sm:w-[300px] h-[400px] flex flex-col justify-between shadow-lg hover:shadow-xl hover:bg-[#144bb8] transition-all"
-		>
-			<div className="flex flex-col items-center space-y-4">
-				<img
-					src={product.icon}
-					alt={`${product.name} icon`}
-					className="w-20 h-20 rounded-full bg-white p-2"
-				/>
-				<h2 className="text-2xl font-bold text-center">{product.name}</h2>
-				<p className="text-sm text-center text-neutral-200 min-h-[72px]">
-					{product.description}
-				</p>
+		<>
+			<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 m-6">
+				{apps.map(({icon, title, description, privacyPath}, index) => (
+					<motion.div
+						key={index}
+						whileHover={{scale: 1.03}}
+						className="bg-[#081B33] text-white border border-blue-500 rounded-2xl p-6 flex flex-col justify-between shadow-md transition-all duration-300"
+					>
+						<div className="flex items-center mb-4">
+							<img src={icon} alt={title} className="w-12 h-12 mr-4" />
+							<h3 className="text-xl font-semibold">{title}</h3>
+						</div>
+						<p className="text-sm text-blue-100 flex-grow">{description}</p>
+
+						<Link
+							to={privacyPath}
+							className="text-sm text-blue-300 mt-2 font-semibold"
+						>
+							Privacy Policy :
+						</Link>
+					</motion.div>
+				))}
 			</div>
-			<Link
-				to={`/privacy-policy/${product.Policy}`}
-				className="mt-6 w-full text-center py-3 bg-white/20 rounded-xl text-white hover:bg-white/30 transition-colors"
-			>
-				Learn More →
-			</Link>
-		</motion.div>
+		</>
 	)
 }
 
@@ -76,7 +123,6 @@ const PrivacyPolicy = () => {
 	useEffect(() => {
 		window.scrollTo(0, 0)
 	}, [])
-
 	return (
 		<motion.div
 			className="px-5 py-10 min-h-screen bg-[#020c1b]"
@@ -102,9 +148,7 @@ const PrivacyPolicy = () => {
 
 				{/* Product cards grid */}
 				<div className="flex flex-wrap justify-left gap-6">
-					{products.map((product, index) => (
-						<ProductCard key={index} product={product} />
-					))}
+					<ProductCard />
 				</div>
 			</div>
 		</motion.div>

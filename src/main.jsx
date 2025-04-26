@@ -28,6 +28,13 @@ import PrivacyPolicy from "./components/resourcess/PrivacyPolicy.jsx"
 import SoftwareDeveloperAndroidPage from "./components/carrier/Jobs/SoftwareDeveloperAndroidPage.jsx"
 import SoftwareDeveloperIOSPage from "./components/carrier/Jobs/SoftwareDeveloperIOSPage.jsx"
 import SoftwareTesterPage from "./components/carrier/Jobs/SoftwareTesterPage.jsx"
+import TermsOfService from "./components/resourcess/TermsOfService.jsx"
+import PrivacyPolicyAntiTheft from "./components/resourcess/PrivacyPolicyApps/PrivacyPolicyAntiTheft.jsx"
+import PrivacyPolicyApplock from "./components/resourcess/PrivacyPolicyApps/PrivacyPolicyApplock.jsx"
+import PrivacyPolicyFirewall from "./components/resourcess/PrivacyPolicyApps/PrivacyPolicyFirewall.jsx"
+import PrivacyPolicyPasswordManager from "./components/resourcess/PrivacyPolicyApps/PrivacyPolicyPasswordManager.jsx"
+import PrivacyPolicyPhotovault from "./components/resourcess/PrivacyPolicyApps/PrivacyPolicyPhotovault.jsx"
+import PrivacyPolicyVPN from "./components/resourcess/PrivacyPolicyApps/PrivacyPolicyVPN.jsx"
 
 const router = createBrowserRouter([
 	{
@@ -91,7 +98,7 @@ const router = createBrowserRouter([
 				path: "/software-test-engineer",
 				element: <SoftwareTesterPage />,
 			},
-	
+
 			{
 				path: "/feedback",
 				element: <Feedback />,
@@ -100,10 +107,39 @@ const router = createBrowserRouter([
 				path: "/contact",
 				element: <Feedback />,
 			},
-			// {
-			// 	path: "/privacy-policy",
-			// 	element: <PrivacyPolicy />,
-			// },
+			{
+				path: "/privacy-policy",
+				element: <PrivacyPolicy />,
+			},
+
+			{
+				path: "/privacy-policy-password-manager",
+				element: <PrivacyPolicyPasswordManager />,
+			},
+			{
+				path: "/privacy-policy-vpn",
+				element: <PrivacyPolicyVPN />,
+			},
+			{
+				path: "/privacy-policy-firewall",
+				element: <PrivacyPolicyFirewall />,
+			},
+			{
+				path: "/privacy-policy-photovault",
+				element: <PrivacyPolicyPhotovault />,
+			},
+			{
+				path: "/privacy-policy-applock",
+				element: <PrivacyPolicyApplock />,
+			},
+			{
+				path: "/privacy-policy-antitheft",
+				element: <PrivacyPolicyAntiTheft />,
+			},
+			{
+				path: "/terms-of-use",
+				element: <TermsOfService />,
+			},
 			{
 				path: "/faq",
 				element: <FAQPage />,
