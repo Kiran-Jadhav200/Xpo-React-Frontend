@@ -1,247 +1,312 @@
-import React from "react"
-import {motion} from "framer-motion"
-import antitheft1 from "../../../assets/images/anti-theft.png"
-import firewall2 from "../../../assets/images/Firewall_2.png"
-import encrypted from "../../../assets/images/encrypted.png"
-import onboard from "../../../assets/images/onboard.png"
+import React from "react";
+import { motion } from "framer-motion";
+import AppLock1 from "../../../assets/Products/APPLOCK/AppLock_1.svg";
+import AppLock2 from "../../../assets/Products/APPLOCK/AppLock_2.svg";
+import encrypted from "../../../assets/images/encrypted.png";
+import onboard from "../../../assets/images/onboard.png";
+import firewall3 from "../../../assets/Products/Firewall/firewall_Image3.svg";
+import googlePlay from "../../../assets/appicon/Google_Play_Store_badge_EN.svg";
 
 // Product data
 const productData = {
-	id: "applock",
-	name: "Xproguard AppLock",
-	shortDescription: "Protect your apps and data with secure app locking.",
-	detailedDescription:
-		"Xproguard AppLock allows you to lock apps using PIN, pattern, or fingerprint. Protect your privacy by securing sensitive apps from unauthorized access.",
-	icon: "appLockSvg",
-	features: [
-		{
-			title: "App Locking",
-			description:
-				"Lock any app with fingerprint, PIN, or pattern for complete privacy.",
-		},
-		{
-			title: "Intruder Selfie",
-			description:
-				"Capture photo of intruder trying to break into locked apps.",
-		},
-		{
-			title: "Custom Lock Themes",
-			description: "Personalize lock screens with themes and wallpapers.",
-		},
-		{
-			title: "Fast & Lightweight",
-			description: "Runs smoothly without draining your phone's battery.",
-		},
-	],
-	stats: {
-		downloads: "10,000+",
-		playstoreRating: "4.6",
-	},
-	playStoreLink:
-		"https://play.google.com/store/apps/details?id=com.xproguard.applock&hl=en",
-	appStoreLink: "#",
+  id: "AppLock",
+  name: "XPROGUARD APPLOCK",
+  shortDescription:
+    "Xproguard AppLock secures your apps with PIN, pattern, or fingerprint protection, preventing unauthorized access. Keep your privacy intact and block intruders with advanced security features.",
+  detailedDescription:
+    "Xproguard AppLock is a security app that locks and protects your apps using a PIN, pattern, or fingerprint. It prevents unauthorized access, captures intruder attempts, and ensures your privacy with advanced security features.",
+  title2: "Explore the Essential Features of Xproguard Applock",
+  icon: AppLock1,
+  icon2: AppLock2,
+  features: [
+    {
+      title: "Secure App Locking",
+      description:
+        "Lock your private apps with PIN, pattern, or fingerprint to prevent unauthorized access.",
+    },
+    {
+      title: "Intruder Detection",
+      description:
+        "Captures a picture of anyone who enters the wrong password, alerting you to unauthorized attempts.",
+    },
+    {
+      title: "Advanced Privacy Features",
+      description:
+        "Disguise AppLock as another app, use an invisible pattern lock, and prevent uninstallation for added security.",
+    },
+    {
+      title: "Ad-Free & Customizable",
+      description:
+        "Enjoy an ad-free experience with dark mode, gradient lock screen themes, and quick unlock options.",
+    },
+  ],
+  stats: {
+    downloads: "1000+",
+    playstoreRating: "4.4",
+  },
+  playStoreLink:
+    "https://play.google.com/store/apps/details?id=com.xproguard.applock&hl=en_IN",
+  // appStoreLink: "#",
+};
+
+const FeatureCard = ({ feature }) => (
+  <div className="w-full max-w-xs bg-transparent p-4">
+    <div className="flex flex-col items-start gap-y-4">
+      <img src={encrypted} alt="Feature" className="w-8 h-8 object-contain" />
+      <h1 className="text-xl font-bold text-white break-words">
+        {feature.title}
+      </h1>
+      <p className="text-sm text-gray-400">{feature.description}</p>
+    </div>
+  </div>
+);
+
+function FirewallApp() {
+  const product = productData;
+
+  return (
+    <div className="min-h-screen w-full bg-[#020c1b] text-white flex flex-col items-center px-6 py-20">
+      {/* Desktop View */}
+      <motion.div
+        className="hidden lg:block bg-[#06152B] p-10 w-full"
+        initial={{ opacity: 0, y: 40 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+      >
+        <div className="text-center mb-8 flex flex-col items-center justify-center gap-y-20">
+          <div>
+            <h1 className="text-6xl font-extrabold">{product.name}</h1>
+            <p className="text-sm w-[40vw] text-gray-300 mt-2">
+              {product.detailedDescription || product.shortDescription}
+            </p>
+          </div>
+
+          {/* Product Showcase */}
+          <div className="relative w-[60vw] h-auto flex justify-center items-center mb-4">
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-0">
+              <div className="rounded-full bg-[#43B5D3] opacity-10 w-[50vw] h-[50vw] blur-3xl">
+                {" "}
+              </div>
+              <img
+                src={onboard}
+                alt="Background"
+                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 object-contain opacity-70 w-[20vw]"
+              />
+            </div>
+            <img
+              src={product.icon}
+              alt={product.name}
+              className="relative z-10 w-[20vw] h-auto object-contain rounded-[50px] border-2 border-black/90"
+            />
+          </div>
+        </div>
+
+        {/* Stats */}
+        {(product.stats?.downloads || product.stats?.playstoreRating) && (
+          <motion.div
+            className="flex justify-center gap-8 text-gray-300 text-sm mb-6"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.4 }}
+          >
+            {product.stats.downloads && (
+              <div>
+                <p className="font-semibold text-white">Downloads</p>
+                <p>{product.stats.downloads}</p>
+              </div>
+            )}
+            {product.stats.playstoreRating && (
+              <div>
+                <p className="font-semibold text-white">Rating</p>
+                <p>⭐ {product.stats.playstoreRating}</p>
+              </div>
+            )}
+          </motion.div>
+        )}
+
+        {/* Features Section */}
+        <div className="text-center mt-16">
+          <h1 className="text-5xl font-bold mb-4">{product.title2}</h1>
+          <p className="text-sm text-gray-400 max-w-2xl mx-auto">
+            {product.detailedDescription}
+          </p>
+        </div>
+
+        <div className="grid grid-cols-3 gap-10 mt-10">
+          <div className="flex flex-col items-end gap-6">
+            <FeatureCard feature={product.features[0]} />
+            <FeatureCard feature={product.features[1]} />
+          </div>
+
+          <div className="flex justify-center items-center">
+            <img
+              src={product.icon2}
+              alt={product.name}
+              className="w-full h-full object-contain rounded-[50px]"
+            />
+          </div>
+
+          <div className="flex flex-col items-start gap-6">
+            <FeatureCard feature={product.features[2]} />
+            <FeatureCard feature={product.features[3]} />
+          </div>
+        </div>
+      </motion.div>
+
+      {/* Mobile View */}
+      <div className="block lg:hidden px-4 py-10">
+        <h1 className="text-3xl font-bold text-center mb-4">{product.name}</h1>
+        <p className="text-sm text-gray-300 text-center mb-6">
+          {product.shortDescription}
+        </p>
+        <div className="w-full flex justify-center mb-6">
+          <img
+            src={product.icon}
+            alt={product.name}
+            className="w-[60%] h-auto object-contain rounded-3xl border border-black/80"
+          />
+        </div>
+
+        {(product.stats?.downloads || product.stats?.playstoreRating) && (
+          <div className="flex justify-around text-gray-300 text-sm mb-8">
+            {product.stats.downloads && (
+              <div className="text-center">
+                <p className="font-semibold text-white">Downloads</p>
+                <p>{product.stats.downloads}</p>
+              </div>
+            )}
+            {product.stats.playstoreRating && (
+              <div className="text-center">
+                <p className="font-semibold text-white">Rating</p>
+                <p>⭐ {product.stats.playstoreRating}</p>
+              </div>
+            )}
+          </div>
+        )}
+
+        <div className="flex flex-col items-center gap-6">
+          {product.features.map((feature, idx) => (
+            <FeatureCard key={idx} feature={feature} />
+          ))}
+        </div>
+
+        {/* Store Buttons */}
+        <div className="flex justify-center gap-4 mt-8">
+          {product.playStoreLink && (
+            <a
+              href={product.playStoreLink}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img src={googlePlay} alt="Google Play" className="h-10" />
+            </a>
+          )}
+          {product.appStoreLink && (
+            <a
+              href={product.appStoreLink}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg"
+                alt="App Store"
+                className="h-10"
+              />
+            </a>
+          )}
+        </div>
+      </div>
+
+      {/* Protect Your Digital Life Section */}
+      <div className="w-full bg-[#06152B] mt-32 py-20 px-6 flex flex-col lg:flex-row items-center justify-between gap-10 rounded-3xl">
+        {/* Text Content */}
+        <div className="flex flex-col items-start max-w-xl">
+          <h1 className="text-4xl lg:text-5xl font-extrabold mb-6 leading-tight">
+            Protect Your Digital Life Today
+          </h1>
+          <p className="text-gray-400 text-base mb-8">
+            Download our top-rated security apps and stay safe online with
+            Xproguard's powerful solutions.
+          </p>
+          <div className="flex gap-4">
+            <a
+              href={product.playStoreLink}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img src={googlePlay} alt="Google Play" className="h-12" />
+            </a>
+            {/* IN future if you devlop appstore app you can add link here */}
+            {/* <a
+              href={product.appStoreLink}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg"
+                alt="App Store"
+                className="h-12"
+              />
+            </a> */}
+          </div>
+        </div>
+
+        {/* Image */}
+        <div className="flex justify-center items-center">
+          <img
+            src={firewall3}
+            alt="Digital Protection"
+            className="w-full max-w-md object-contain"
+          />
+        </div>
+      </div>
+
+      {/* Customer Testimonials Section */}
+      <div className="w-full bg-[#06152B] mt-20 py-20 px-6 flex flex-col items-center gap-10 rounded-3xl">
+        <h1 className="text-4xl lg:text-5xl font-extrabold text-center">
+          What Our Customers Say
+        </h1>
+
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 mt-10">
+          {[...Array(3)].map((_, idx) => {
+            const testimonials = [
+              {
+                quote:
+                  "Xproguard Firewall has made my phone much safer and faster! Highly recommend.",
+                author: "- Rahul S.",
+              },
+              {
+                quote:
+                  "I love how simple and effective this app is. No ads, no nonsense!",
+                author: "- Priya D.",
+              },
+              {
+                quote:
+                  "The best firewall app I have ever used. It just works perfectly!",
+                author: "- Arjun M.",
+              },
+            ];
+
+            const testimonial = testimonials[idx];
+
+            return (
+              <motion.div
+                key={idx}
+                className="bg-[#0a1a30] p-6 rounded-xl shadow-md"
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: idx * 0.2 }}
+              >
+                <p className="text-gray-300 mb-4">"{testimonial.quote}"</p>
+                <p className="text-white font-bold">{testimonial.author}</p>
+              </motion.div>
+            );
+          })}
+        </div>
+      </div>
+    </div>
+  );
 }
 
-const FeatureCard = ({feature}) => (
-	<div className="w-full max-w-xs bg-transparent p-4">
-		<div className="flex flex-col items-start gap-y-4">
-			<img src={encrypted} alt="Feature" className="w-8 h-8 object-contain" />
-			<h1 className="text-xl font-bold text-white break-words">
-				{feature.title}
-			</h1>
-			<p className="text-sm text-gray-400">{feature.description}</p>
-		</div>
-	</div>
-)
-
-function ApplockApp() {
-	const product = productData
-
-	return (
-		<div className="min-h-screen w-full bg-[#020c1b] text-white flex flex-col items-center px-6 py-20">
-			{/* Desktop View */}
-			<motion.div
-				className="hidden lg:block bg-[#06152B] p-10 w-full"
-				initial={{opacity: 0, y: 40}}
-				animate={{opacity: 1, y: 0}}
-				transition={{duration: 0.6}}
-			>
-				<div className="text-center mb-8 flex flex-col items-center justify-center gap-y-20">
-					<div>
-						<h1 className="text-6xl font-extrabold">{product.name}</h1>
-						<p className="text-sm w-[40vw] text-gray-300 mt-2">
-							{product.detailedDescription || product.shortDescription}
-						</p>
-					</div>
-
-					{/* Product Showcase with glow effect */}
-					<div className="relative w-[60vw] h-auto flex justify-center items-center mb-4">
-						<div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-0">
-							<div className="rounded-full bg-[#43B5D3] opacity-10 w-[50vw] h-[50vw] blur-3xl"></div>
-							<img
-								src={onboard}
-								alt="Background"
-								className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 object-contain opacity-70 w-[20vw]"
-							/>
-						</div>
-						<img
-							src={product.icon}
-							alt={product.name}
-							className="relative z-10 w-full h-auto object-contain rounded-[50px] "
-						/>
-					</div>
-				</div>
-
-				{/* Stats */}
-				{(product.stats?.downloads || product.stats?.playstoreRating) && (
-					<motion.div
-						className="flex justify-center gap-8 text-gray-300 text-sm mb-6"
-						initial={{opacity: 0}}
-						animate={{opacity: 1}}
-						transition={{delay: 0.4}}
-					>
-						{product.stats.downloads && (
-							<div>
-								<p className="font-semibold text-white">Downloads</p>
-								<p>{product.stats.downloads}</p>
-							</div>
-						)}
-						{product.stats.playstoreRating && (
-							<div>
-								<p className="font-semibold text-white">Rating</p>
-								<p>⭐ {product.stats.playstoreRating}</p>
-							</div>
-						)}
-					</motion.div>
-				)}
-
-				{/* Features Section */}
-				<div className="text-center mt-16">
-					<h1 className="text-5xl font-bold mb-4">{product.title2}</h1>
-					<p className="text-sm text-gray-400 max-w-2xl mx-auto">
-						{product.detailedDescription}
-					</p>
-				</div>
-
-				<div className="grid grid-cols-3 gap-10 mt-10">
-					<div className="flex flex-col items-end gap-6">
-						<FeatureCard feature={product.features[0]} />
-						<FeatureCard feature={product.features[1]} />
-					</div>
-
-					<div className="flex justify-center items-center">
-						<img
-							src={product.icon2}
-							alt={product.name}
-							className="w-full h-full object-contain rounded-[50px]"
-						/>
-					</div>
-
-					<div className="flex flex-col items-start gap-6">
-						<FeatureCard feature={product.features[2]} />
-						<FeatureCard feature={product.features[3]} />
-					</div>
-				</div>
-
-				{/* Store Buttons */}
-				<div className="flex justify-center gap-4 mt-10">
-					{product.playStoreLink && (
-						<a
-							href={product.playStoreLink}
-							target="_blank"
-							rel="noopener noreferrer"
-						>
-							<img
-								src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg"
-								alt="Google Play"
-								className="h-10"
-							/>
-						</a>
-					)}
-					{product.appStoreLink && (
-						<a
-							href={product.appStoreLink}
-							target="_blank"
-							rel="noopener noreferrer"
-						>
-							<img
-								src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg"
-								alt="App Store"
-								className="h-10"
-							/>
-						</a>
-					)}
-				</div>
-			</motion.div>
-
-			{/* Mobile View */}
-			<div className="block lg:hidden px-4 py-10">
-				<h1 className="text-3xl font-bold text-center mb-4">{product.name}</h1>
-				<p className="text-sm text-gray-300 text-center mb-6">
-					{product.shortDescription}
-				</p>
-				<div className="w-full flex justify-center mb-6">
-					<img
-						src={product.icon}
-						alt={product.name}
-						className="w-[60%] h-auto object-contain rounded-3xl border border-black/80"
-					/>
-				</div>
-
-				{(product.stats?.downloads || product.stats?.playstoreRating) && (
-					<div className="flex justify-around text-gray-300 text-sm mb-8">
-						{product.stats.downloads && (
-							<div className="text-center">
-								<p className="font-semibold text-white">Downloads</p>
-								<p>{product.stats.downloads}</p>
-							</div>
-						)}
-						{product.stats.playstoreRating && (
-							<div className="text-center">
-								<p className="font-semibold text-white">Rating</p>
-								<p>⭐ {product.stats.playstoreRating}</p>
-							</div>
-						)}
-					</div>
-				)}
-
-				<div className="flex flex-col items-center gap-6">
-					{product.features.map((feature, idx) => (
-						<FeatureCard key={idx} feature={feature} />
-					))}
-				</div>
-
-				<div className="flex justify-center gap-4 mt-8">
-					{product.playStoreLink && (
-						<a
-							href={product.playStoreLink}
-							target="_blank"
-							rel="noopener noreferrer"
-						>
-							<img
-								src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg"
-								alt="Google Play"
-								className="h-10"
-							/>
-						</a>
-					)}
-					{product.appStoreLink && (
-						<a
-							href={product.appStoreLink}
-							target="_blank"
-							rel="noopener noreferrer"
-						>
-							<img
-								src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg"
-								alt="App Store"
-								className="h-10"
-							/>
-						</a>
-					)}
-				</div>
-			</div>
-		</div>
-	)
-}
-
-export default ApplockApp
+export default FirewallApp;
