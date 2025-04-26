@@ -1,6 +1,36 @@
 import React, { useState } from "react";
 import ContinuousScroll from "../../ContinousScroll";
 
+const jobDetails = {
+  title: " Software Engineer (iOS) ",
+  description:
+    "We are seeking a talented and passionate Software Engineer (iOS) to join our dynamic mobile development team. In this role, you will work on building world-class iOS applications that deliver seamless user experiences. You will collaborate closely with designers, product managers, and fellow engineers to bring innovative ideas to life while maintaining the highest standards of performance, usability, and code quality.",
+  aboutJob:
+    "As a Software Engineer specializing in iOS development, you will design and build advanced applications for the iOS platform using Swift, SwiftUI, and UIKit. You will be responsible for developing new features, enhancing existing functionalities, and ensuring high performance and responsiveness across a variety of devices. You will be involved throughout the entire product lifecycle — from conceptualization and design to testing, release, and maintenance — while following best practices for mobile development and clean architecture.",
+  responsibilities: [
+    "Design, build, and maintain advanced applications for the iOS platform using Swift, SwiftUI, and UIKit.",
+    "Collaborate with cross-functional teams to define, design, and ship new features.",
+    "Work with external data sources and APIs.",
+    "Write clean, maintainable, and efficient code following industry best practices.",
+    "Continuously discover, evaluate, and implement new technologies to maximize development efficiency.",
+    "Participate in code reviews, design discussions, and other team collaboration activities.",
+  ],
+  qualifications: [
+    "Bachelor’s degree in Computer Science, Engineering, or related field, or equivalent practical experience.",
+    "3+ years of experience in iOS development using Swift, SwiftUI, and UIKit.",
+    "2 years of experience in testing, maintaining, or launching software products.",
+    "1 year of experience with software design and architecture principles.",
+  ],
+  benefits: [
+    "Competitive Salary based on experience and skills.",
+    "Flexible Working Hours and remote work opportunities.",
+    "Health Insurance covering medical, dental, and vision.",
+  ],
+  jobType: "Full Time",
+  workingHours: "9:00 - 18:00",
+  location: "India",
+};
+
 const SoftwareDeveloperIOSPage = () => {
   const [formData, setFormData] = useState({
     firstName: "",
@@ -24,11 +54,9 @@ const SoftwareDeveloperIOSPage = () => {
     e.preventDefault();
     try {
       const formPayload = new FormData();
-      formPayload.append("firstName", formData.firstName);
-      formPayload.append("lastName", formData.lastName);
-      formPayload.append("email", formData.email);
-      formPayload.append("phone", formData.phone);
-      if (formData.resume) formPayload.append("resume", formData.resume);
+      Object.entries(formData).forEach(([key, value]) => {
+        if (value) formPayload.append(key, value);
+      });
 
       await fetch("/api/apply", {
         method: "POST",
@@ -44,12 +72,8 @@ const SoftwareDeveloperIOSPage = () => {
     <div className="bg-[#000A1B] text-white min-h-screen">
       {/* Hero Section */}
       <section className="text-center py-12 px-6">
-        <h1 className="text-4xl font-bold mb-4">Software Developer</h1>
-        <p className="max-w-3xl mx-auto">
-          The Smart Sales Assistant can also provide insights into customer
-          behavior and preferences, allowing you to optimize your marketing and
-          sales strategies.
-        </p>
+        <h1 className="text-4xl font-bold mb-4">{jobDetails.title}</h1>
+        <p className="max-w-3xl mx-auto">{jobDetails.description}</p>
       </section>
 
       <ContinuousScroll />
@@ -59,53 +83,27 @@ const SoftwareDeveloperIOSPage = () => {
         {/* Job Details */}
         <div className="flex-1">
           <h2 className="text-2xl font-semibold mb-4">Job description</h2>
-          <p className="mb-6">
-            As a SaaS Specialist at Intelligent Analytics Suite, you will play a
-            crucial role in delivering exceptional SaaS solutions to our
-            clients...
-          </p>
+          <p className="mb-6">{jobDetails.aboutJob}</p>
 
           <h3 className="text-xl font-semibold mb-2">Job responsibilities</h3>
           <ul className="list-disc list-inside mb-6 space-y-1">
-            <li>
-              Implementation and Configuration: Collaborate with clients …
-            </li>
-            <li>Technical Support: Provide technical support to clients …</li>
-            <li>
-              System Maintenance and Upgrades: Perform regular maintenance …
-            </li>
-            <li>
-              Training and Documentation: Conduct sessions and create docs …
-            </li>
-            <li>
-              Continuous Improvement: Stay up-to-date with industry trends …
-            </li>
-            <li>
-              Collaboration and Communication: Work closely with
-              cross-functional teams …
-            </li>
+            {jobDetails.responsibilities.map((item, index) => (
+              <li key={index}>{item}</li>
+            ))}
           </ul>
 
           <h3 className="text-xl font-semibold mb-2">Qualifications</h3>
           <ul className="list-disc list-inside mb-6 space-y-1">
-            <li>Bachelor's degree in CS, IT, or related field.</li>
-            <li>Proven SaaS implementation/support experience.</li>
-            <li>
-              Strong cloud computing, API, and data integration knowledge.
-            </li>
-            <li>Proficiency in Python, Java, or Ruby preferred.</li>
-            <li>Excellent problem-solving and analytical skills.</li>
-            <li>Exceptional communication and interpersonal abilities.</li>
-            <li>Ability to manage multiple projects simultaneously.</li>
+            {jobDetails.qualifications.map((item, index) => (
+              <li key={index}>{item}</li>
+            ))}
           </ul>
 
           <h3 className="text-xl font-semibold mb-2">Other benefits</h3>
           <ul className="list-disc list-inside mb-6 space-y-1">
-            <li>Health, dental, and vision plans; tuition assistance; PTO.</li>
-            <li>
-              2:1 retirement plan contributions; child care; housing subsidy.
-            </li>
-            <li>ICF and CEAP certifications (desired).</li>
+            {jobDetails.benefits.map((item, index) => (
+              <li key={index}>{item}</li>
+            ))}
           </ul>
 
           <p>
@@ -118,9 +116,9 @@ const SoftwareDeveloperIOSPage = () => {
         {/* Application Form */}
         <div className="flex-1 self-start bg-black p-8 rounded-xl shadow-2xl border border-purple-500/30">
           <div className="flex justify-between items-center mb-6 text-sm text-white">
-            <span>🗓 Full Time</span>
-            <span>🕘 9:00 - 18:00</span>
-            <span>📍 India</span>
+            <span>🗓 {jobDetails.jobType}</span>
+            <span>🕓 {jobDetails.workingHours}</span>
+            <span>📍 {jobDetails.location}</span>
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-6">

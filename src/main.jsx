@@ -28,7 +28,7 @@ import PrivacyPolicy from "./components/resourcess/PrivacyPolicy.jsx"
 import SoftwareDeveloperAndroidPage from "./components/carrier/Jobs/SoftwareDeveloperAndroidPage.jsx"
 import SoftwareDeveloperIOSPage from "./components/carrier/Jobs/SoftwareDeveloperIOSPage.jsx"
 import SoftwareTesterPage from "./components/carrier/Jobs/SoftwareTesterPage.jsx"
-import UIUXDesignerPage from "./components/carrier/Jobs/UIUXDesignerPage.jsx"
+
 const router = createBrowserRouter([
 	{
 		path: "/",
@@ -91,10 +91,7 @@ const router = createBrowserRouter([
 				path: "/software-test-engineer",
 				element: <SoftwareTesterPage />,
 			},
-			{
-				path: "/uiux-designer",
-				element: <UIUXDesignerPage />,
-			},
+	
 			{
 				path: "/feedback",
 				element: <Feedback />,

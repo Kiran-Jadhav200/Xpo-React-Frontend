@@ -1,7 +1,36 @@
 import React, { useState } from "react";
 import ContinuousScroll from "../../ContinousScroll";
 
-const SoftwareTesterPage = () => {
+const jobDetails = {
+  title: " Software Test Engineer",
+  description:
+    "We are seeking a highly motivated and detail-oriented Software Test Engineer to join our dynamic team. As a Software Test Engineer, you will be responsible for ensuring the quality, reliability, and performance of our applications through both manual and automated testing. Your passion for technology and commitment to excellence will directly contribute to delivering world-class products to our customers.",
+  aboutJob:
+    "As a Software Test Engineer, you will collaborate closely with developers, product managers, and UX designers to understand product functionality and user requirements. You will design and execute comprehensive test plans, identify bugs, and ensure issues are addressed before product releases. You will have the opportunity to work with a modern tech stack, introduce new testing methodologies, and continuously improve our QA processes.",
+  responsibilities: [
+    "Design, develop, and execute detailed test plans, test cases, and test scripts.",
+    "Collaborate with cross-functional teams to understand requirements and translate them into effective testing strategies.",
+    "Perform manual and automated testing of web, mobile, and backend applications.",
+    "Identify, document, and track software defects and inconsistencies.",
+    "Perform manual and automated testing of web, mobile, and backend applications.",
+  ],
+  qualifications: [
+    "Bachelor’s degree in Computer Science, Engineering, or related field, or equivalent practical experience.",
+    "2+ years of experience in one or more programming languages such as Java, Python, C#, or JavaScript.",
+    "3+ years of hands-on experience in software quality assurance and testing methodologies.",
+    "1 year of experience with software design and architecture principles.",
+  ],
+  benefits: [
+    "Competitive Salary based on experience and skills.",
+    "Flexible Working Hours and remote work opportunities.",
+    "Health Insurance covering medical, dental, and vision.",
+  ],
+  jobType: "Full Time",
+  workingHours: "9:00 - 18:00",
+  location: "India",
+};
+
+const SoftwareDeveloperIOSPage = () => {
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -24,11 +53,9 @@ const SoftwareTesterPage = () => {
     e.preventDefault();
     try {
       const formPayload = new FormData();
-      formPayload.append("firstName", formData.firstName);
-      formPayload.append("lastName", formData.lastName);
-      formPayload.append("email", formData.email);
-      formPayload.append("phone", formData.phone);
-      if (formData.resume) formPayload.append("resume", formData.resume);
+      Object.entries(formData).forEach(([key, value]) => {
+        if (value) formPayload.append(key, value);
+      });
 
       await fetch("/api/apply", {
         method: "POST",
@@ -44,12 +71,8 @@ const SoftwareTesterPage = () => {
     <div className="bg-[#000A1B] text-white min-h-screen">
       {/* Hero Section */}
       <section className="text-center py-12 px-6">
-        <h1 className="text-4xl font-bold mb-4">Software Developer</h1>
-        <p className="max-w-3xl mx-auto">
-          The Smart Sales Assistant can also provide insights into customer
-          behavior and preferences, allowing you to optimize your marketing and
-          sales strategies.
-        </p>
+        <h1 className="text-4xl font-bold mb-4">{jobDetails.title}</h1>
+        <p className="max-w-3xl mx-auto">{jobDetails.description}</p>
       </section>
 
       <ContinuousScroll />
@@ -59,53 +82,27 @@ const SoftwareTesterPage = () => {
         {/* Job Details */}
         <div className="flex-1">
           <h2 className="text-2xl font-semibold mb-4">Job description</h2>
-          <p className="mb-6">
-            As a SaaS Specialist at Intelligent Analytics Suite, you will play a
-            crucial role in delivering exceptional SaaS solutions to our
-            clients...
-          </p>
+          <p className="mb-6">{jobDetails.aboutJob}</p>
 
           <h3 className="text-xl font-semibold mb-2">Job responsibilities</h3>
           <ul className="list-disc list-inside mb-6 space-y-1">
-            <li>
-              Implementation and Configuration: Collaborate with clients …
-            </li>
-            <li>Technical Support: Provide technical support to clients …</li>
-            <li>
-              System Maintenance and Upgrades: Perform regular maintenance …
-            </li>
-            <li>
-              Training and Documentation: Conduct sessions and create docs …
-            </li>
-            <li>
-              Continuous Improvement: Stay up-to-date with industry trends …
-            </li>
-            <li>
-              Collaboration and Communication: Work closely with
-              cross-functional teams …
-            </li>
+            {jobDetails.responsibilities.map((item, index) => (
+              <li key={index}>{item}</li>
+            ))}
           </ul>
 
           <h3 className="text-xl font-semibold mb-2">Qualifications</h3>
           <ul className="list-disc list-inside mb-6 space-y-1">
-            <li>Bachelor's degree in CS, IT, or related field.</li>
-            <li>Proven SaaS implementation/support experience.</li>
-            <li>
-              Strong cloud computing, API, and data integration knowledge.
-            </li>
-            <li>Proficiency in Python, Java, or Ruby preferred.</li>
-            <li>Excellent problem-solving and analytical skills.</li>
-            <li>Exceptional communication and interpersonal abilities.</li>
-            <li>Ability to manage multiple projects simultaneously.</li>
+            {jobDetails.qualifications.map((item, index) => (
+              <li key={index}>{item}</li>
+            ))}
           </ul>
 
           <h3 className="text-xl font-semibold mb-2">Other benefits</h3>
           <ul className="list-disc list-inside mb-6 space-y-1">
-            <li>Health, dental, and vision plans; tuition assistance; PTO.</li>
-            <li>
-              2:1 retirement plan contributions; child care; housing subsidy.
-            </li>
-            <li>ICF and CEAP certifications (desired).</li>
+            {jobDetails.benefits.map((item, index) => (
+              <li key={index}>{item}</li>
+            ))}
           </ul>
 
           <p>
@@ -118,9 +115,9 @@ const SoftwareTesterPage = () => {
         {/* Application Form */}
         <div className="flex-1 self-start bg-black p-8 rounded-xl shadow-2xl border border-purple-500/30">
           <div className="flex justify-between items-center mb-6 text-sm text-white">
-            <span>🗓 Full Time</span>
-            <span>🕘 9:00 - 18:00</span>
-            <span>📍 India</span>
+            <span>🗓 {jobDetails.jobType}</span>
+            <span>🕓 {jobDetails.workingHours}</span>
+            <span>📍 {jobDetails.location}</span>
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-6">
@@ -188,4 +185,4 @@ const SoftwareTesterPage = () => {
   );
 };
 
-export default SoftwareTesterPage;
+export default SoftwareDeveloperIOSPage;
