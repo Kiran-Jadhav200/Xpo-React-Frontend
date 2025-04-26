@@ -20,7 +20,11 @@ export default function Footer() {
 			icon: Instagram,
 			href: "https://www.instagram.com/xproguard/#",
 		},
-		{name: "X", icon: X, href: "https://x.com/xproguard"},
+		{
+			name: "X",
+			icon: X,
+			href: "https://x.com/xproguard",
+		},
 		{
 			name: "LinkedIn",
 			icon: Linkedin,
@@ -135,9 +139,9 @@ export default function Footer() {
 					© {currentYear} Total Xproguard. All rights reserved.
 				</p>
 				<div className="flex space-x-6 text-gray-400">
-					<a href="/privacy-policy" className="hover:text-white">
+					<Link to="/privacy-policy" className="hover:text-white">
 						Privacy Policy
-					</a>
+					</Link>
 					<a href="/terms-of-service" className="hover:text-white">
 						Terms of Service
 					</a>
