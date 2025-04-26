@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import ContinuousScroll from "../../ContinousScroll";
+import emailjs from "@emailjs/browser";
 
 const jobDetails = {
   title: "Software Engineer (Android)",
@@ -53,26 +54,44 @@ const SoftwareDeveloperAndroidPage = () => {
     }
   };
 
+  const form = React.useRef(); // Create a reference to the form
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      const formPayload = new FormData();
-      Object.entries(formData).forEach(([key, value]) => {
-        if (value) formPayload.append(key, value);
-      });
+    const template_params = {
+      firstName: formData.firstName,
+      lastName: formData.lastName,
+      email: formData.email,
+      phone: formData.phone,
+      resume: formData.resume,
+    };
+    emailjs
+      .send(
+        "service_7h3nzb8",
+        "template_ab5m408",
+        template_params,
+        "IBHMfMA9k3-4y2cnD"
+      )
+      .then((response) => {
+        setStatusMessage("Form submitted successfully!");
+        console.log("Email sent successfully", response);
 
-      await fetch("/api/apply", {
-        method: "POST",
-        body: formPayload,
+        setFormData({
+          firstName: "",
+          lastName: "",
+          email: "",
+          phone: "",
+          resume: null,
+        }).catch((error) => {
+          console.error("Error submitting form:", error);
+          setStatusMessage(
+            "Oops! Something went wrong while submitting the form."
+          );
+        });
       });
-      setStatusMessage("Thank you! Your message has been received.");
-    } catch {
-      setStatusMessage("Oops! Something went wrong while submitting the form.");
-    }
   };
 
   return (
-    
     <div className="bg-[#000A1B] text-white min-h-screen">
       {/* Hero Section */}
       <section className="text-center py-12 px-6">
@@ -125,7 +144,7 @@ const SoftwareDeveloperAndroidPage = () => {
             <span>📍 {jobDetails.location}</span>
           </div>
 
-          <form onSubmit={handleSubmit} className="space-y-6">
+          <form ref={form} onSubmit={handleSubmit} className="space-y-6">
             <div className="grid grid-cols-2 gap-4">
               <input
                 type="text"

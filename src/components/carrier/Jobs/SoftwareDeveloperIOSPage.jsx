@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import ContinuousScroll from "../../ContinousScroll";
+import emailjs from "@emailjs/browser";
+
 
 const jobDetails = {
   title: " Software Engineer (iOS) ",
